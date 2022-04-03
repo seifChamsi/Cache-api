@@ -39,3 +39,23 @@ export async function getAllCaches() {
     logger.error(error);
   }
 }
+
+export async function deleteCacheByKey(givenKey: string) {
+  try {
+    const cachs = await CacheModel.findOneAndDelete({ key: `${givenKey}` });
+
+    return cachs;
+  } catch (error) {
+    logger.error(error);
+  }
+}
+
+export async function deleteAllCaches() {
+  try {
+    const cachs = await CacheModel.deleteMany({});
+
+    return cachs;
+  } catch (error) {
+    logger.error(error);
+  }
+}
