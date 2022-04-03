@@ -1,6 +1,7 @@
 import { Express, Request, Response } from "express";
 import {
   createrCacheHanlder,
+  getAllCacheHanlder,
   getCacheHanlder,
 } from "./controller/cache.controller";
 import validateResource from "./middleware/validateResource";
@@ -12,6 +13,7 @@ function routes(app: Express) {
 
   app.post("/api/cache", createrCacheHanlder);
   app.get("/api/cache/:key", getCacheHanlder);
+  app.get("/api/cache", getAllCacheHanlder);
 }
 
 export default routes;

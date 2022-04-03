@@ -29,3 +29,13 @@ export async function getCacheByKey(givenKey: string) {
     return updatedCache.value;
   }
 }
+
+export async function getAllCaches() {
+  try {
+    const cachs = await CacheModel.find({});
+
+    return cachs;
+  } catch (error) {
+    logger.error(error);
+  }
+}
