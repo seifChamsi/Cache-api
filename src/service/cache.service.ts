@@ -10,9 +10,9 @@ import lodash from "lodash";
 /// Please follow the link for more infos : https://en.wikipedia.org/wiki/Cache_replacement_policies#First_in_first_out_(FIFO)
 export async function createCache(input: DocumentDefinition<CacheDocument>) {
   try {
-    const Cachs = await getAllCaches();
+    const cachs = await getAllCaches();
 
-    if (Cachs != null && Cachs.length >= 10) {
+    if (cachs != null && cachs.length >= 10) {
       const cacheRecord = await CacheModel.find({}).sort({ ttl: -1 }).limit(1);
       CacheModel.deleteOne({ _id: cacheRecord[0]._id });
       console.log("cache deleted");
