@@ -1,17 +1,17 @@
 import { Request, Response, NextFunction } from "express";
 import { AnyZodObject } from "zod";
+import CacheModel from "../models/cache.model";
 
 const validateResource =
-  (schema: AnyZodObject) =>
-  (req: Request, res: Response, next: NextFunction) => {
-    try {
-      schema.parse({
-        body: req.body,
-        query: req.query,
-        params: req.params,
-      });
-    } catch (error) {
-      return res.status(400).send(error);
+  (key: string) => (req: Request, res: Response, next: NextFunction) => {
+    let cacheToFind = CacheModel.find({
+      key: `${req.body.key}`,
+    });
+
+    if (cacheToFind != null) {
+      return res.json({ message: "the key must be unique" });
+    } else {
+      next();
     }
   };
 export default validateResource;
