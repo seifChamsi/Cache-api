@@ -58,7 +58,7 @@ $ npm run dev
 
 #### Delete all cache items by key
 ```http
-  DELETE /api/cache/
+  DELETE /api/cache
 ```
 
 
