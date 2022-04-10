@@ -1,5 +1,5 @@
 
-# Cache API / Fashion Cloud Hambrug
+# Cache API
 
 a REST API that exposes methods to interact with a cache that you will
 build. You will have to use Node.js and Express.js to build the API and MongoDB to store the
